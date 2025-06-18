@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -26,53 +26,54 @@ export default function GeneratePage() {
     } catch (err) {
       console.error("Error generating thumbnail:", err);
     }
-    setLoading(false);
     setPrompt("");
+    setLoading(false);
   };
 
   return (
     <main className="min-h-screen bg-slate-50 pt-28 dark:bg-slate-900 text-slate-900 dark:text-slate-100 sm:mt-16 p-4 md:p-8">
       <section className="max-w-4xl mx-auto text-center">
-        <h1 className="text-5xl font-bold mb-4">🔮 AI Thumbnail Magic</h1>
-        <p className="mb-6 text-lg text-slate-600 dark:text-slate-300">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">🔮 AI Thumbnail Magic</h1>
+        <p className="mb-6 text-base md:text-lg text-slate-600 dark:text-slate-300">
           Turn your creative prompt into a professional thumbnail with the power of AI. Fast, smart, and uniquely yours.
         </p>
 
-         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-left">
+        <div className=" hidden sm:grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-left">
           <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-2">⚡ Fast Results</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300">Your thumbnail is generated in seconds, so you can move fast.</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">
+              Your thumbnail is generated in seconds, so you can move fast.
+            </p>
           </div>
           <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-2">🎨 Unique Styles</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300">Every output is AI-crafted based on your prompt—no duplicates.</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">
+              Every output is AI-crafted based on your prompt—no duplicates.
+            </p>
           </div>
           <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-2">🧠 Smart AI</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-300">We use advanced models to understand your intent and theme.</p>
+            <p className="text-sm text-slate-600 dark:text-slate-300">
+              We use advanced models to understand your intent and theme.
+            </p>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 mb-6 w-full">
           <Input
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g. Gamer streaming with neon lights"
-            className="flex-1 text-base px-4 py-3 rounded-xl"
+            className="flex-1 text-base px-4 py-3 rounded-xl w-full"
           />
-         {
-           prompt.length > 20 && (
-             <Button
+          <Button
             onClick={handleGenerate}
-            disabled={loading}
-            className="text-base px-6 py-3 rounded-xl shadow-md hover:scale-105 transition-transform"
+            disabled={!prompt.trim() || loading}
+            className="text-base px-6 py-3 rounded-xl shadow-md hover:scale-105 transition-transform w-full sm:w-auto"
           >
             {loading ? "Generating..." : "Generate"}
           </Button>
-           )
-         }
         </div>
 
         <div className="text-sm text-slate-500 dark:text-slate-400 mb-10">
